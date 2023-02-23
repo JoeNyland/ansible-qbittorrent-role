@@ -16,6 +16,7 @@
 - name: Install
   apt:
     name: qbittorrent-nox
+    update_cache: true
 
 - name: Create systemd service
   copy:
