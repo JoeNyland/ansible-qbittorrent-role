@@ -1,0 +1,51 @@
+---
+- name: Create system user
+  user:
+    name: qbittorrent
+    system: true
+    shell: /usr/sbin/nologin
+    create_home: false
+    home: /var/lib/qbittorrent
+
+- name: Add users to the group
+  user:
+    name: "{{ item }}"
+    groups: qbittorrent
+    append: true
+  with_items: "{{ qbittorrent_users }}"
+
+- name: Install
+  apt:
+    name: qbittorrent-nox
+
+- name: Create systemd service
+  copy:
+    dest: /etc/systemd/system/qbittorrent.service
+    src: qbittorrent.service
+    mode: '0644'
+  notify: Reload systemd
+
+- name: Create config directory
+  file:
+    name: /var/lib/qbittorrent/.config/qBittorrent/
+    state: directory
+    owner: qbittorrent
+    group: qbittorrent
+    mode: '0755'
+
+- name: Configure
+  copy:
+    dest: /var/lib/qbittorrent/.config/qBittorrent/qBittorrent.conf
+    src: qbittorrent.conf
+    owner: qbittorrent
+    group: qbittorrent
+    force: false
+    mode: '0644'
+  notify: Restart qBittorrent
+
+- name: Configure service
+  service:
+    name: qbittorrent
+    state: started
+    enabled: true
+  register: qbittorrent_service
