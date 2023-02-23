@@ -4,7 +4,6 @@
     name: qbittorrent
     system: true
     shell: /usr/sbin/nologin
-    create_home: false
     home: /var/lib/qbittorrent
 
 - name: Add users to the group
