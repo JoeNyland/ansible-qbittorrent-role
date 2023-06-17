@@ -18,6 +18,12 @@ jobs:
 
   molecule:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false # If tests fail in one image, we still want the others to carry on running
+      matrix:
+        image:
+          - geerlingguy/docker-debian11-ansible # bullseye (oldstable)
+          - geerlingguy/docker-debian10-ansible # buster (oldoldstable)
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -25,6 +31,8 @@ jobs:
           fetch-depth: 0 # needed for progressive mode to work
       - name: Run molecule
         uses: gofrolist/molecule-action@v2
+        env:
+          IMAGE: ${{ matrix.image }}
 
   publish:
     runs-on: ubuntu-latest
