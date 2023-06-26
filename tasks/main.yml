@@ -9,6 +9,7 @@
         system: true
         shell: /usr/sbin/nologin
         home: /var/lib/qbittorrent
+        skeleton: /dev/null
 
     - name: Add users to the group
       user:
