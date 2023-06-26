@@ -1,10 +1,6 @@
 ---
 - name: Restart qBittorrent
   service:
-    name: qbittorrent
+    name: qbittorrent-nox@qbittorrent
     state: restarted
   when: qbittorrent_service.enabled
-
-- name: Reload systemd
-  systemd:
-    daemon_reload: true

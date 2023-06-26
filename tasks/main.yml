@@ -22,13 +22,6 @@
         name: qbittorrent-nox
         update_cache: true
 
-    - name: Create systemd service
-      copy:
-        dest: /etc/systemd/system/qbittorrent.service
-        src: qbittorrent.service
-        mode: '0644'
-      notify: Reload systemd
-
     - name: Create config directory
       file:
         name: /var/lib/qbittorrent/.config/qBittorrent/
@@ -49,7 +42,7 @@
 
     - name: Configure service
       service:
-        name: qbittorrent
+        name: qbittorrent-nox@qbittorrent
         state: started
         enabled: true
       register: qbittorrent_service
