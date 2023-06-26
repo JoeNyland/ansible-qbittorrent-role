@@ -31,14 +31,16 @@
         group: qbittorrent
         mode: '0755'
 
-    - name: Configure
-      copy:
-        dest: /var/lib/qbittorrent/.config/qBittorrent/qBittorrent.conf
-        src: qbittorrent.conf
+    - name: Accept legal notice
+      community.general.ini_file:
+        path: /var/lib/qbittorrent/.config/qBittorrent/qBittorrent.conf
+        section: LegalNotice
+        option: Accepted
+        value: 'true'
         owner: qbittorrent
         group: qbittorrent
-        force: false
         mode: '0644'
+        no_extra_spaces: true
       notify: Restart qBittorrent
 
     - name: Configure service
