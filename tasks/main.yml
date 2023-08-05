@@ -49,3 +49,22 @@
         state: started
         enabled: true
       register: qbittorrent_service
+
+    - name: Configure service overrides directory
+      file:
+        path: /etc/systemd/system/qbittorrent-nox@qbittorrent.service.d/
+        state: directory
+        owner: root
+        group: root
+        mode: 0755
+
+    - name: Configure service overrides
+      copy:
+        src: qbittorrent-nox@qbittorrent.service
+        dest: /etc/systemd/system/qbittorrent-nox@qbittorrent.service.d/override.conf
+        owner: root
+        group: root
+        mode: 0644
+      notify:
+        - Reload systemd
+        - Restart qBittorrent
