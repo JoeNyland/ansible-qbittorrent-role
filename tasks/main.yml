@@ -46,10 +46,8 @@
     - name: Configure service
       service:
         name: qbittorrent-nox@qbittorrent
-        state: started
-        enabled: true
-      register: qbittorrent_service
-
+        state: "{{ qbittorrent_service_state }}"
+        enabled: "{{ qbittorrent_service_enabled }}"
     - name: Configure service overrides directory
       file:
         path: /etc/systemd/system/qbittorrent-nox@qbittorrent.service.d/
