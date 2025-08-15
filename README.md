@@ -21,9 +21,13 @@ Should the qbittorrent service start at boot?
 
 What state should the qbittorrent service be in? e.g. started/stopped
 
-### `qbittorrent_users`
+### `qbittorrent_group_users`
 
 Which users should be added to the qBittorrent group (created by this role), allowing read/write access to the files qBittorrent downloads.
+
+### `qbittorrent_user_groups`
+
+Which groups should the qBittorrent user be added to? This is useful for allowing qBittorrent to access files in other directories, such as `/media` or `/mnt` that are not owned by the qBittorrent user.
 
 Dependencies
 ------------

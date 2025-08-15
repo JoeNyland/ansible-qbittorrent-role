@@ -10,14 +10,14 @@
         shell: /usr/sbin/nologin
         home: /var/lib/qbittorrent
         skeleton: /dev/null
-
+        groups: "{{ qbittorrent_user_groups }}"
+        append: true
     - name: Add users to the group
       user:
         name: "{{ item }}"
         groups: qbittorrent
         append: true
-      with_items: "{{ qbittorrent_users }}"
-
+      with_items: "{{ qbittorrent_group_users }}"
     - name: Install
       apt:
         name: qbittorrent-nox

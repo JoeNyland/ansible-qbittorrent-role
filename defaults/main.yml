@@ -3,4 +3,7 @@
 qbittorrent_service_enabled: true
 # What state should the qBittorrent service be in? e.g. started/stopped
 qbittorrent_service_state: started
-qbittorrent_users: []
+# List of users that should be members of the qBittorrent group.
+qbittorrent_group_users: []
+# List of user groups that the qBittorrent user should be a member of.
+qbittorrent_user_groups: []
