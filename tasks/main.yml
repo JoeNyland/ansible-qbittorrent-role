@@ -21,7 +21,6 @@
     - name: Install
       apt:
         name: qbittorrent-nox
-        update_cache: true
 
     - name: Create config directory
       file:
