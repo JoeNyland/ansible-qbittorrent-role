@@ -1,4 +1,6 @@
 ---
+# Should the qBittorrent service start at boot?
 qbittorrent_service_enabled: true
+# What state should the qBittorrent service be in? e.g. started/stopped
 qbittorrent_service_state: started
 qbittorrent_users: []
