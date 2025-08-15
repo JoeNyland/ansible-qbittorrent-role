@@ -21,7 +21,7 @@
     - name: Install
       apt:
         name: qbittorrent-nox
-
+        install_recommends: false
     - name: Create config directory
       file:
         name: /var/lib/qbittorrent/.config/qBittorrent/
