@@ -5,5 +5,5 @@ qbittorrent_service_enabled: true
 qbittorrent_service_state: started
 # List of users that should be members of the qBittorrent group.
 qbittorrent_group_users: []
-# List of user groups that the qBittorrent user should be a member of.
+# List of groups that the qBittorrent user should be a member of.
 qbittorrent_user_groups: []
