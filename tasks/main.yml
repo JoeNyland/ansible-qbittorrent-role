@@ -19,7 +19,6 @@
         groups: qbittorrent
         append: true
       with_items: "{{ qbittorrent_group_users }}"
-      notify: Restart qBittorrent
     - name: Install
       apt:
         name: qbittorrent-nox
