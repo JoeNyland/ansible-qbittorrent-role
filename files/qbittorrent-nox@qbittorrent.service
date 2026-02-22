@@ -1,2 +1,4 @@
 [Service]
 UMask=002
+Restart=always
+RestartSec=5
